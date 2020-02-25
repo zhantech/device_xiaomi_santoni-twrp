@@ -25,6 +25,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sys.sdcardfs=true
 
+# Encryption
+PRODUCT_PACKAGES += \
+    libcryptfs_hw
+
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := santoni
 PRODUCT_NAME := full_santoni
