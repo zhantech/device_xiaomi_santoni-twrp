@@ -29,6 +29,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     libcryptfs_hw
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hardware.keystore=msm8937
+
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := santoni
 PRODUCT_NAME := full_santoni
