@@ -35,10 +35,17 @@ on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
 
+on init
+    export LD_CONFIG_FILE /etc/ld.config.txt
+
 on property:ro.crypto.state=encrypted
     start sbinqseecomd
 
 # Separate copy needed to use /sbin/linker64 instead of /system/bin/linker64
+service ldconfigtxt /sbin/touch /etc/ld.config.txt
+    oneshot
+    seclabel u:r:recovery:s0
+
 service sbinqseecomd /sbin/qseecomd
     disabled
     user root
