@@ -29,6 +29,12 @@ TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
 
+#Init
+TARGET_INIT_VENDOR_LIB := libinit_santoni
+TARGET_RECOVERY_DEVICE_MODULES := libinit_santoni
+TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
+
+
 # Platform
 TARGET_BOARD_PLATFORM := msm8937
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno505
@@ -104,3 +110,6 @@ TW_INCLUDE_FUSE_NTFS := true
 # Treble
 BOARD_NEEDS_VENDORIMAGE_SYMLINK := false
 TARGET_COPY_OUT_VENDOR := vendor
+
+#Official
+BR_OFFICIAL := true
