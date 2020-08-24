@@ -6,7 +6,7 @@ jobs:
       - image: fr3akyphantom/droid-builder:latest
     environment:
       MANIFEST_BRANCH: 'android-9.0'
-      VERSION: '2.9.1'
+      VERSION: '3.0.0'
       MAINTAINER: '@zhantech'
       VENDOR: 'xiaomi'
       CODENAME: 'santoni'
