@@ -13,17 +13,16 @@ jobs:
       BUILD_LUNCH: 'omni_santoni-eng'
       #TEST_BUILD: 'true'
       PB_OFFICIAL: 'true'
+      CHANGELOG: " - Bump 3.0.0\n
+                   - Change Kernel 4.9\n
+                   - Sync Last\n"
     working_directory: /home/builder/pitchblack
     steps: 
       - checkout
       - run:
           name: AIO Build
           command: |
-            echo "Set GitAuth Infos too"
-            git config --global user.email $GitHubMail
-            git config --global user.name $GitHubName
-            git config --global color.ui true
-            wget -q https://raw.githubusercontent.com/PitchBlackRecoveryProject/vendor_utils/pb/build.sh
+             wget -q https://raw.githubusercontent.com/PitchBlackRecoveryProject/vendor_utils/pb/build.sh
             source build.sh
 workflows:
   version: 2
@@ -32,5 +31,5 @@ workflows:
       - build:
           filters:
             branches:
-              only: android-9.0
+              only: PBRP
           context: org-global
