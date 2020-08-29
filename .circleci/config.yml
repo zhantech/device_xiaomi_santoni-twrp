@@ -1,35 +1,14 @@
 version: 2.1
 jobs:
-  build:
-    docker:
-      # new all-in-one docker image
-      - image: fr3akyphantom/droid-builder:latest
-    environment:
-      MANIFEST_BRANCH: 'android-9.0'
-      VERSION: '3.0.0'
-      MAINTAINER: '@zhantech'
-      VENDOR: 'xiaomi'
-      CODENAME: 'santoni'
-      BUILD_LUNCH: 'omni_santoni-eng'
-      #TEST_BUILD: 'true'
-      PB_OFFICIAL: 'true'
-      CHANGELOG: " - Bump 3.0.0\n
-                   - Change Kernel 4.9\n
-                   - Sync Last\n"
-    working_directory: /home/builder/pitchblack
-    steps: 
-      - checkout
+  compile:
+   docker:
+      - image: fadlyas/kernel_dockerfile:latest
+   steps:
       - run:
-          name: AIO Build
           command: |
-             wget -q https://raw.githubusercontent.com/PitchBlackRecoveryProject/vendor_utils/pb/build.sh
-            source build.sh
+           git clone https://github.com/zhantech/device_xiaomi_santoni-twrp -b PBRP
 workflows:
-  version: 2
-  build_and_test:
+  version: 2.1
+  cooking:
     jobs:
-      - build:
-          filters:
-            branches:
-              only: PBRP
-          context: org-global
+      - compile
